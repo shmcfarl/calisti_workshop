@@ -85,7 +85,7 @@ do
 done
 
 #labstart
-curl http://master.demos.eticloud.io:8000/labnotif/start
+#curl http://master.demos.eticloud.io:8000/labnotif/start
 
 
 # Find the node's first 2 octets for use to create metallb IP ranges (assumes k3d docker networks are using /16 cidr):
