@@ -181,4 +181,11 @@ Generate traffic against the "movies" service.
 
 Select the "v3" workload and under the "OVERVIEW" tab, you will see an increase in the "INCOMING REQUEST BY SOURCE" metric.
 
+## Conclusion
+
+This concludes the Calsti hands-on lab. 
+
+Navigate to https://calisti.app. Click on the “Sign up, It’s Free” button and proceed to register and download the Calisti binaries.
+
+![calisti register](images/1_1.png)
 
