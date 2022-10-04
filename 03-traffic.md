@@ -44,7 +44,7 @@ Select any row of a trace to see more information about that trace.
 Calisti also provides distributed tracing - the process of tracking individual requests throughout their whole call stack in the system.
 
 With distributed tracing in place it is possible to visualize full call stacks, to see which service called which service, how long each call took and how much were the network latencies between them. It is possible to tell where a request failed or which service took too much time to respond.
-To collect and visualize this information Istio comes with tools like Jaeger which is installed automatically by default when installing Service Mesh Manager.
+To collect and visualize this information, Istio comes with tools like Jaeger which is installed automatically by default when installing Calisti.
 
 The demo application uses golang services which are configured to propagate the necessary tracing headers.
 
@@ -79,7 +79,7 @@ A circuit breaker can have three states:
 
 Calisti is using Istio’s - and therefore Envoy’s - circuit breaking feature under the hood.
 
-Let's configure a circuit breaker for a service. In the "TOPOLOGY" view, select the "analytics" service, select the "CIRCUIT BREAKER" tab and then Configure.
+Let's configure a circuit breaker for a service. In the "TOPOLOGY" view, select the "analytics" service, select the "CIRCUIT BREAKER" tab and then "Configure".
 
 ![circuit 2](images/circuit_2.png)
 
