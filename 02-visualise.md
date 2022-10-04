@@ -12,7 +12,7 @@ The topology page serves as a starting point of diagnosing problems within the m
 
 Select the smm-demo namespace and display its topolgy.
 
-![topology 1](images/topology_1.png)
+![topology 1](images/m1_3.png)
 
 The nodes in the graph are services or workloads, while the arrows represent network connections between different services. This is based on Istio metrics retrieved from Prometheus. You can click and zoom into the services and note how the traffic protocols along with the requests per second(RPS) are also shown in the topology view.
 
@@ -59,20 +59,3 @@ Let's generate some traffic on the frontend service from the smm-demo namespace.
 Going back to the overview page of the dashboard we can now see the traffic increasing.
 
 ![traffic 4](images/traffic_4.png)
-
-For the demoapp application constant traffic can also be generated using the CLI. (already started when deployed, no need to start again)
-
-Start with
-
-```
-smm demoapp load start
-```
-
-and stop with
-
-```
-smm demoapp load stop
-```
-
-
-
