@@ -77,7 +77,7 @@ Please copy the generated token and paste in the dedicated field when opening th
 
 ## The Calisti Dashboard - Topology View
 
-Click the three horizontal menu lines at the top-left of the screen > Select TOPOLOGY.
+Click the three horizontal menu lines at the top-left of the screen > Select "TOPOLOGY".
 
 In the "NAMESPACES" list, select "smm-demo" checkbox if it is not already checked.
 
