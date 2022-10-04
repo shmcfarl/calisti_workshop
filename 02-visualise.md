@@ -8,9 +8,9 @@ The TOPOLOGY page of the Service Mesh Manager web interface displays the topolog
 
 The topology view is almost entirely based on metrics: metrics received from Prometheus and enhanced with information from Kubernetes.
 
-The topology page serves as a starting point of diagnosing problems within the mesh. Service Mesh Manager is integrated with Grafana and Jaeger for easy access to in-depth monitoring and distributed traces of various services.
+The topology page serves as a starting point of diagnosing problems within the mesh. Calisti is integrated with Grafana and Jaeger for easy access to in-depth monitoring and distributed traces of various services.
 
-Select the smm-demo namespace and display its topolgy.
+If not already selected, select the "smm-demo" namespace and display its topolgy.
 
 ![topology 1](images/m1_3.png)
 
