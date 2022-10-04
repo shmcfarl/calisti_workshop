@@ -168,10 +168,12 @@ Select the "movies" service, then "TRAFFIC MANAGEMENT". You can see a pre-define
 
 Select the pencil icon on the far right of the existing traffic management rule. 
 
-Set the Following values
-- SUBSET v1 - WEIGHT: 0
-- SUBSET v2 - WEIGHT: 0
+Set the Following values:
+- Click the X on the first row to delete the v1 subset
+- Click the X on the second row to delete the v2 subset
 - SUBSET v3 - WEIGHT: 100
+
+Select "Apply"
 
 ![traffic m3](images/mtraffic_3.png)
 
