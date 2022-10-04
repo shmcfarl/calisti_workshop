@@ -76,7 +76,13 @@ Please copy the generated token and paste in the dedicated field when opening th
 ![calisti dashboard login](images/dashboard_login.png)
 
 ## The Calisti Dashboard - Topology View
-The Calisti dashboard shows the demo application that is deployed across two Kubernetes clusters. 
+
+Click the three horizontal menu lines at the top-left of the screen > Select TOPOLOGY.
+
+In the "NAMESPACES" list, select "smm-demo" checkbox if it is not already checked.
+
+The Calisti dashboard shows the demo application that is deployed across two Kubernetes clusters.
+
 
 ![calisti dashboard 1](images/m1_3.png)
 
