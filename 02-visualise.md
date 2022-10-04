@@ -35,7 +35,7 @@ Calisti is also able to show the details for services such as MySQL and Postgres
 ![calisti dashboard 6](images/1_8.png)
 
 
-Select one node in the graph (for example the postgresql service) and display its details. By drilling down and selecting the pod it is also possible to display its logs directly in the dashboard (click on the ![log](images/log_icon.png) icon)
+Select the "postgresql (kind-demo1)" service in the graph and display its details. By drilling down and selecting the pod it is also possible to display its logs directly in the dashboard (click on the ![log](images/log_icon.png) icon)
 
 ![topology 1](images/pod_logs.png)
 
