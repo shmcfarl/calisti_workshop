@@ -179,4 +179,4 @@ Generate traffic against the "MOVIES" service.
 
 Select the "v3" workload and under the "OVERVIEW" tab, you will see an increase in the "INCOMING REQUEST BY SOURCE" metric.
 
-After a period of time, you will notice that the "MOVIES" v1 and v2 workloads will vanish from the TOPOLOGY view.
+
