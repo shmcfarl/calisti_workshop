@@ -131,7 +131,7 @@ With Calisti, you can inject failures at the application layer to test the resil
 
 Calisti uses Istio’s (Envoy) fault injection feature under the hood.
 
-Select the "BOOKINGS" service in the "TOPOLOGY" view and "CREATE NEW".
+Select the "bookings" service in the "TOPOLOGY" view and "CREATE NEW".
 
 ![fault 1](images/fault_1.png)
 
@@ -158,7 +158,7 @@ To remove the Fault Injection, select the "TRAFFIC MANAGEMENT" tab and click on 
 
 Application service meshes support the use of Traffic Steering, AKA: Traffic Splitting. This functionality provides a way to have multiple versions of a service and then 'steer' traffic to each version of that service by a percentage of traffic. This is an awesome way of testing out brand new code or new capablities using live traffic.
 
-In the "TOPOLOGY" view, notice that under the "MOVIES" service that there are a v1, v2 and v3 workloads. In this excercise you will steer traffic to only the v3 service.
+In the "TOPOLOGY" view, notice that under the "movies" service that there are a v1, v2 and v3 workloads. In this excercise you will steer traffic to only the v3 service.
 
 ![traffic m1](images/mtraffic_1.png)
 
@@ -175,7 +175,7 @@ Set the Following values
 
 ![traffic m3](images/mtraffic_3.png)
 
-Generate traffic against the "MOVIES" service.
+Generate traffic against the "movies" service.
 
 Select the "v3" workload and under the "OVERVIEW" tab, you will see an increase in the "INCOMING REQUEST BY SOURCE" metric.
 
