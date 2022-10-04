@@ -3,13 +3,13 @@
 
 ## Traffic tap
 
-The traffic tap feature of Service Mesh Manager enables you to monitor live access logs of the Istio sidecar proxies. Each sidecar proxy outputs access information for the individual HTTP requests or HTTP/gRPC streams.
+The traffic tap feature of Calisti enables you to monitor live access logs of the Istio sidecar proxies. Each sidecar proxy outputs access information for the individual HTTP requests or HTTP/gRPC streams.
 
 The access logs contain information about the: reporter proxy, source and destination workloads, request, response, as well as the timings.
 
 ### Traffic tap using the CLI
 
-To watch the access logs for an individual namespace, workload/pod, use the smm tap command. Be sure to have some live traffic generated using any of the previous methods for this to work.
+To watch the access logs for an individual namespace, workload/pod, use the "smm tap" command. Be sure to have some live traffic generated using any of the previous methods for this to work.
 
 For smm-demo namespace
 
@@ -27,18 +27,19 @@ It is also possible to filter on workload
 smm tap --ns smm-demo workload/bookings-v1
 ```
 
-
-and also use filter tags to only display the relevant lines like
-
-```bash
-smm tap ns/smm-demo --method GET --response-code 500,599
-```
-
 ### Traffic tap using the UI
+
+Select the menu at the top-left of the screen and select "TRAFFIC TAP" then select "smm-demo" in the "REPORTING SOURCE" list. Select "START STREAMING".
+
+After a few seconds, select "PAUSE STREAMING".
 
 The functionality is also available in the UI, including setting the different filters.
 
 ![ttapui 1](images/ttapui_1.png)
+
+Select any row of a trace to see more information about that trace.
+
+### Distributed Tracing
 
 Calisti also provides distributed tracing - the process of tracking individual requests throughout their whole call stack in the system.
 
@@ -49,6 +50,10 @@ The demo application uses golang services which are configured to propagate the 
 
 Once load is sent to the application, traces can be perceived right away.
 Jaeger is exposed through an ingress gateway and the links are present on the UI (both on the graph and list view). 
+
+Select the menu item at the top-left of the screen and select "TOPOLOGY". Select the "bookings" service then select the "Traces" item on the right-hand side of the screen (in the "OVERVIEW" tab).
+
+In the Jaeger UI, select one of the rows of traces and click around the various spans of the trace to look at the details of the service and spans.
 
 
 ![ttapui 2](images/ttapui_2.png)
@@ -72,9 +77,9 @@ A circuit breaker can have three states:
 
 ![circuit 1](images/circuit_1.png)
 
-Service Mesh Manager is using Istio’s - and therefore Envoy’s - circuit breaking feature under the hood.
+Calisti is using Istio’s - and therefore Envoy’s - circuit breaking feature under the hood.
 
-Let's configure a circuit breaker for a service. In the topology select the analytics service, select the CIRCUIT BREAKER tab and then Configure.
+Let's configure a circuit breaker for a service. In the "TOPOLOGY" view, select the "analytics" service, select the "CIRCUIT BREAKER" tab and then Configure.
 
 ![circuit 2](images/circuit_2.png)
 
@@ -93,13 +98,15 @@ In order to be able to see immediate results of the Circuit Breaker activation, 
   - VASE EJECTION TIME: 10
   - MAX EJECTION PERCENTAGE: 1
 
+Select "CONFIGURE"
+
 ![circuit 3](images/circuit_3.png)
 
 Generate some additional load on the analytics service.
 
 ![circuit 4](images/circuit_4.png)
 
-When traffic begins to flow the circuit breaker starts to trip requests. In the Service Mesh Manager UI, you can see two live Grafana dashboards which specifically show the circuit breaker trips and help you learn more about the errors involved.
+When traffic begins to flow the circuit breaker starts to trip requests. In the Calisti UI, you can see two live Grafana dashboards which specifically show the circuit breaker trips and help you learn more about the errors involved.
 
 The first dashboard details the percentage of total requests that were tripped by the circuit breaker. When there are no circuit breaker errors, and your service works as expected, this graph shows 0%. Otherwise, it shows the percentage of the requests that were tripped by the circuit breaker.
 
@@ -107,7 +114,7 @@ The second dashboard provides a breakdown of the trips caused by the circuit bre
 
 ![circuit 4](images/breaker_5.png)
 
-To remove circuit breaking select the Delete icon in the top of the CIRCUIT BREAKER page.
+To remove circuit breaking select the Delete icon in the top of the "CIRCUIT BREAKER" entry.
 
 ![circuit 5](images/breaker_6.png)
 
@@ -116,15 +123,15 @@ To remove circuit breaking select the Delete icon in the top of the CIRCUIT BREA
 
 Fault injection is a system testing method which involves the deliberate introduction of network faults and errors into a system. It can be used to identify design or configuration weaknesses, and to ensure that the system can handle faults and recover from error conditions.
 
-With Service Mesh Manager, you can inject failures at the application layer to test the resiliency of the services. You can configure faults to be injected into requests that match specific conditions to simulate service failures and higher latency between services. There are two types of failures:
+With Calisti, you can inject failures at the application layer to test the resiliency of the services. You can configure faults to be injected into requests that match specific conditions to simulate service failures and higher latency between services. There are two types of failures:
 
 **Delay** adds a time delay before forwarding the requests, emulating various failures such as network issues, an overloaded upstream service, and so on.
 
 **Abort** aborts the HTTP request attempts and returns error codes to a downstream service, giving the impression that the upstream service is faulty.
 
-Service Mesh Manager uses Istio’s (Envoy) fault injection feature under the hood.
+Calisti uses Istio’s (Envoy) fault injection feature under the hood.
 
-Create a new traffic route rule in the Traffic Management menu of the selected topology node.
+Select the "BOOKINGS" service in the "TOPOLOGY" view and "CREATE NEW".
 
 ![fault 1](images/fault_1.png)
 
@@ -139,191 +146,37 @@ Set the Following values
 ![fault 2](images/fault_2.png)
 ![fault 3](images/fault_3.png)
 
-Click Apply and check the status in the Topology page as the result of the injected faults
+Select "Apply". Under the "OVERVIEW" tab, you can see the ERROR RATE increasing. Select the "HEALTH" tab. You can see that 503 HTTP response code graph climbing. Also, you can see an increasing number of errors under the two ERRORs tables.
+
+Finally, notice that the BOOKINGS "v1" pod will change color over time. Eventually dependent services will begin to be impacted by the errors (FRONTPAGE-v1).
 
 ![fault 5](images/fault_5.png)
 
-## Ingress Gateway
+To remove the Fault Injection, select the "TRAFFIC MANAGEMENT" tab and click on the trash can icon to the far right of the fault policy and then confirm the route deletion by selecting "Delete".
 
- Gateways are to manage inbound and outbound traffic for your mesh, letting you specify which traffic you want to enter or leave the mesh. Gateway configurations are applied to standalone Envoy proxies that are running at the edge of the mesh, rather than sidecar Envoy proxies running alongside your service workloads. 
- Ingress gateways define an entry point into your Istio mesh for incoming traffic.
+## Traffic Steering/Splitting (Canaries, Blue/Green)
 
-![fault 5](images/ingress_1.png)
+Application service meshes support the use of Traffic Steering, AKA: Traffic Splitting. This functionality provides a way to have multiple versions of a service and then 'steer' traffic to each version of that service by a percentage of traffic. This is an awesome way of testing out brand new code or new capablities using live traffic.
 
-```bash
-cat > echo.yaml <<EOF
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: echo
-  labels:
-    k8s-app: echo
-  namespace: default
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      k8s-app: echo
-  template:
-    metadata:
-      labels:
-        k8s-app: echo
-    spec:
-      terminationGracePeriodSeconds: 2
-      containers:
-      - name: echo-service
-        image: k8s.gcr.io/echoserver:1.10
-        ports:
-        - containerPort: 8080
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: echo
-  labels:
-    k8s-app: echo
-  namespace: default
-spec:
-  ports:
-  - name: http
-    port: 80
-    targetPort: 8080
-  selector:
-    k8s-app: echo
-EOF
-kubectl apply -f echo.yaml
-```
+In the "TOPOLOGY" view, notice that under the "MOVIES" service that there are a v1, v2 and v3 workloads. In this excercise you will steer traffic to only the v3 service.
 
-Create a new ingress gateway using the IstioMeshGateway resource. Calisti creates a new ingress gateway deployment and a corresponding service, and automatically labels them with the gateway-name and gateway-type labels and their corresponding values.
-IstioMeshGateway is a custom Istio operator as defined by SMM that allows to easily setup multiple gateways in a cluster.
+![traffic m1](images/mtraffic_1.png)
 
-```bash
-cat > meshgw.yaml <<EOF
-apiVersion: servicemesh.cisco.com/v1alpha1
-kind: IstioMeshGateway
-metadata:
-  name: demo-gw
-spec:
-  istioControlPlane:
-    name: cp-v113x
-    namespace: istio-system
-  runAsRoot: false
-  service:
-    ports:
-      - name: tcp-status-port
-        port: 15021
-        protocol: TCP
-        targetPort: 15021
-      - name: http
-        port: 80
-        protocol: TCP
-        targetPort: 8080
-    type: LoadBalancer
-  type: ingress 
-EOF
-kubectl apply -f meshgw.yaml
-```
+Select the "movies" service, then "TRAFFIC MANAGEMENT". You can see a pre-defined traffic management rule. You will notice that the defind traffic splitting ration is 33% for each version of the movies service.
 
-Get the IP address of the gateway.
+![traffic m2](images/mtraffic_2.png)
 
-```bash
-kubectl -n default get istiomeshgateways demo-gw
-```
+Select the pencil icon on the far right of the existing traffic management rule. 
 
-Create the Gateway and VirtualService resources to configure listening ports on the matching gateway deployment. Virtual Service defines a set of traffic routing rules to apply when a host is addressed. Each routing rule defines matching criteria for traffic of a specific protocol. If the traffic is matched, then it is sent to a named destination service.
-The hosts fields should point to the external hostname of the service. (for testing purposes we are using nip.io, which is a domain name that provides wildcard DNS for any IP address.)
+Set the Following values
+- SUBSET v1 - WEIGHT: 0
+- SUBSET v2 - WEIGHT: 0
+- SUBSET v3 - WEIGHT: 100
 
-```bash
-cat > gw_vs.yaml <<EOF
-apiVersion: networking.istio.io/v1alpha3
-kind: Gateway
-metadata:
-  name: echo
-  namespace: default
-spec:
-  selector:
-    gateway-name: demo-gw
-    gateway-type: ingress
-  servers:
-  - port:
-      number: 80
-      name: http
-      protocol: HTTP
-    hosts:
-    - "echo.172.18.250.3.nip.io"
----
-apiVersion: networking.istio.io/v1alpha3
-kind: VirtualService
-metadata:
-  name: echo
-  namespace: default
-spec:
-  hosts:
-  - "echo.172.18.250.3.nip.io"
-  gateways:
-  - echo 
-  http:
-  - route:
-    - destination:
-        port:
-          number: 80
-        host: echo.default.svc.cluster.local
-EOF
-kubectl apply -f gw_vs.yaml
-```
-Access the service on the external address.
+![traffic m3](images/mtraffic_3.png)
 
+Generate traffic against the "MOVIES" service.
 
-```bash
-curl -i echo.172.18.250.3.nip.io
-```
+Select the "v3" workload and under the "OVERVIEW" tab, you will see an increase in the "INCOMING REQUEST BY SOURCE" metric.
 
-The command is making a GET request to echo.172.18.250.3.nip.io and should be able to successfuly reach the echo service.
-The expected result should be similar to:
-
-```
-HTTP/1.1 200 OK
-date: Wed, 14 Sep 2022 07:44:57 GMT
-content-type: text/plain
-server: istio-envoy
-x-envoy-upstream-service-time: 0
-transfer-encoding: chunked
-
-
-
-Hostname: echo-7ffdff66-86dvs
-
-Pod Information:
-        -no pod information available-
-
-Server values:
-        server_version=nginx: 1.13.3 - lua: 10008
-
-Request Information:
-        client_address=10.244.1.31
-        method=GET
-        real path=/
-        query=
-        request_version=1.1
-        request_scheme=http
-        request_uri=http://echo.172.19.250.3.nip.io:8080/
-
-Request Headers:
-        accept=*/*
-        host=echo.172.19.250.3.nip.io
-        user-agent=curl/7.80.0
-        x-b3-sampled=0
-        x-b3-spanid=eceed2c536945ef6
-        x-b3-traceid=0ed39aea7da454cceceed2c536945ef6
-        x-envoy-attempt-count=1
-        x-envoy-decorator-operation=echo.default.svc.cluster.local:80/*
-        x-envoy-internal=true
-        x-envoy-peer-metadata=ChQKDkFQUF9DT05UQUlORVJTEgIaAAoaCgpDTFVTVEVSX0lEEgwaCmtpbmQtZGVtbzEKGQoNSVNUSU9fVkVSU0lPThIIGgYxLjEzLjUK2wIKBkxBQkVMUxLQAirNAgoZCgxnYXRld2F5LW5hbWUSCRoHZGVtby1ndwoZCgxnYXRld2F5LXR5cGUSCRoHaW5ncmVzcwonCgxpc3Rpby5pby9yZXYSFxoVY3AtdjExM3guaXN0aW8tc3lzdGVtCiEKEXBvZC10ZW1wbGF0ZS1oYXNoEgwaCjVjNjhmZDZjZDkKHgoHcmVsZWFzZRITGhFpc3Rpby1tZXNoZ2F0ZXdheQosCh9zZXJ2aWNlLmlzdGlvLmlvL2Nhbm9uaWNhbC1uYW1lEgkaB2RlbW8tZ3cKLwojc2VydmljZS5pc3Rpby5pby9jYW5vbmljYWwtcmV2aXNpb24SCBoGbGF0ZXN0CiEKF3NpZGVjYXIuaXN0aW8uaW8vaW5qZWN0EgYaBHRydWUKJwoZdG9wb2xvZ3kuaXN0aW8uaW8vbmV0d29yaxIKGghuZXR3b3JrMQoSCgdNRVNIX0lEEgcaBW1lc2gxCiIKBE5BTUUSGhoYZGVtby1ndy01YzY4ZmQ2Y2Q5LWprNmdrChYKCU5BTUVTUEFDRRIJGgdkZWZhdWx0CksKBU9XTkVSEkIaQGt1YmVybmV0ZXM6Ly9hcGlzL2FwcHMvdjEvbmFtZXNwYWNlcy9kZWZhdWx0L2RlcGxveW1lbnRzL2RlbW8tZ3cKFwoRUExBVEZPUk1fTUVUQURBVEESAioAChoKDVdPUktMT0FEX05BTUUSCRoHZGVtby1ndw==
-        x-envoy-peer-metadata-id=router~10.244.1.31~demo-gw-5c68fd6cd9-jk6gk.default~default.svc.cluster.local
-        x-forwarded-for=10.244.1.1
-        x-forwarded-proto=http
-        x-request-id=39e6de8f-65d1-4999-8431-10f8b5bcc95c
-
-Request Body:
-        -no body in request-
-```
+After a period of time, you will notice that the "MOVIES" v1 and v2 workloads will vanish from the TOPOLOGY view.
