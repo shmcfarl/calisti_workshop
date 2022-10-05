@@ -58,7 +58,7 @@ k9s
 
 ## Calisti dashboard
 
-Service Mesh Manager provides a dashboard interface that can be used to diagnose any issues with the underlying deployment.
+Calisti provides a dashboard interface that can be used to diagnose any issues with the underlying deployment.
 
 In order to be able to access the Calisti dashboard outside of the lab container we need to enable a reverse-proxy 
 ```bash
