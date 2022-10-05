@@ -51,7 +51,7 @@ The demo application uses golang services which are configured to propagate the 
 Once load is sent to the application, traces can be perceived right away.
 Jaeger is exposed through an ingress gateway and the links are present on the UI (both on the graph and list view). 
 
-Select the menu item at the top-left of the screen and select "TOPOLOGY". Select the "bookings" service then select the "Traces" item on the right-hand side of the screen (in the "OVERVIEW" tab).
+Select the menu item at the top-left of the screen and select "TOPOLOGY". Select the "bookings" service then select the "Traces" item that is on the lower-right hand side of the window (in the "OVERVIEW" tab).
 
 In the Jaeger UI, select one of the rows of traces and click around the various spans of the trace to look at the details of the service and spans.
 
@@ -131,7 +131,7 @@ With Calisti, you can inject failures at the application layer to test the resil
 
 Calisti uses Istio’s (Envoy) fault injection feature under the hood.
 
-Select the "bookings" service in the "TOPOLOGY" view and "CREATE NEW".
+Select the "bookings" service in the "TOPOLOGY" view, seelect "TRAFFIC MANAGEMENT" and "CREATE NEW".
 
 ![fault 1](images/fault_1.png)
 
