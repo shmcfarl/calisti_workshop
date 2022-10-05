@@ -30,7 +30,9 @@ We can easily observe the various microservices in the demo application:
 
 
 
-Calisti is also able to show the details for services such as MySQL and Postgresql – these metrics are not available in Istio and is a value-add provided by Calisti. Click on the postgresql service and in the pop-up window, scroll down to note how it shows the details such as SQL transactions per second, etc.  
+Calisti is also able to show the details for services such as MySQL and Postgresql – these metrics are not available in Istio and is a value-add provided by Calisti. 
+
+Select the postgresql service and in the pop-up window, scroll down to note how it shows the details such as SQL transactions per second, etc.  
 
 ![calisti dashboard 6](images/1_8.png)
 
