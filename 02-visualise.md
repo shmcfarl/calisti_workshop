@@ -37,7 +37,7 @@ Select the postgresql service and in the pop-up window, scroll down to note how 
 ![calisti dashboard 6](images/1_8.png)
 
 
-Select the "postgresql (kind-demo1)" service in the graph and display its details. By drilling down and selecting the pod it is also possible to display its logs directly in the dashboard (click on the ![log](images/log_icon.png) icon)
+Select the "postgresql (kind-demo1)" service in the graph and display its details. By drilling down and selecting the pod it is also possible to display its logs directly in the dashboard (click on the ![log](images/log_icon.png) icon) NOTE: The log window will be at the lower-right corner of the window. You may have to drag the top of the log window up to see it more easily.
 
 ![topology 1](images/pod_logs.png)
 
