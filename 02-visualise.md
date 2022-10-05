@@ -4,7 +4,7 @@
 
 ## Topolgy 
 
-The TOPOLOGY page of the Service Mesh Manager web interface displays the topology of services and workloads inside the mesh, and annotates it with real-time information about latency, throughput, or HTTP request failures. You can also display historical data by adjusting the timeline.
+The TOPOLOGY page of the Calisti web interface displays the topology of services and workloads inside the mesh, and annotates it with real-time information about latency, throughput, or HTTP request failures. You can also display historical data by adjusting the timeline.
 
 The topology view is almost entirely based on metrics: metrics received from Prometheus and enhanced with information from Kubernetes.
 
