@@ -24,7 +24,7 @@ Upon completion of this lab, you will be able to:
 
 To check the status of the Kubernetes cluster, do the following:
 
-Verify the cluster exists.  Expected output should show the `demo1` cluster.
+Verify the cluster exists.  Expected output should show the 'demo1' and 'demo2' clusters.
 
 ```bash
 kind get clusters
