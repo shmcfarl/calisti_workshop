@@ -6,7 +6,7 @@
 
 The TOPOLOGY page of the Calisti web interface displays the topology of services and workloads inside the mesh, and annotates it with real-time information about latency, throughput, or HTTP request failures. You can also display historical data by adjusting the timeline.
 
-The topology view is almost entirely based on metrics: metrics received from Prometheus and enhanced with information from Kubernetes.
+The topology view is almost entirely based on metrics received from Prometheus and enhanced with information from Kubernetes.
 
 The topology page serves as a starting point of diagnosing problems within the mesh. Calisti is integrated with Grafana and Jaeger for easy access to in-depth monitoring and distributed traces of various services.
 
@@ -44,7 +44,7 @@ Select the "postgresql (kind-demo1)" service in the graph and display its detail
 ## Generate traffic load
 
 
-Most of the data displayed and the features provided in the Calisti interface is based on anaylsing the traffic received by the different applications in the cluster. Calisti provides several mechanisms to generate traffic.
+Most of the data displayed and the features provided in the Calisti interface are based on anaylsing the traffic received by the different applications in the cluster. Calisti provides several mechanisms to generate traffic.
 
 If there is no traffic generated, the topolgy cannot be displayed and an option to generate traffic is displayed instead.
 
