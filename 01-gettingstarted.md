@@ -10,7 +10,7 @@ A service mesh provides many benefits to Cloud Native applications, including ob
 
 Calisti is a multi and hybrid-cloud enabled service mesh platform for constructing modern applications. Built on Kubernetes, and our Istio operator, Calisti enables flexibility, portability and consistency across on-prem data centres and cloud environments. Calisti operationalizes the service mesh to bring deep observability, convenient management, and policy-based security to modern container & virtual machine-based applications.
 
-Calisti includes Prometheus to ensure faster troubleshooting and recovery. It supports distributed tracing via Jeager which is installed automatically by default when installing Calisti. 
+Calisti includes Prometheus to ensure faster troubleshooting and recovery. It supports distributed tracing via Jaeger which is installed automatically by default when installing Calisti. 
 
 Upon completion of this lab, you will be able to: 
 
@@ -18,13 +18,11 @@ Upon completion of this lab, you will be able to:
 
 •	Debug and troubleshoot issues in your service
 
-•	Configure an ingress proxy for a custom service
-
 ### Kubernetes Checks
 
-To check the status of the Kubernetes cluster, do the following:
+Two KinD (Kubernetes in Docker) clusters have already been deployed for you. To check the status of the Kubernetes cluster, do the following:
 
-Verify the cluster exists.  Expected output should show the 'demo1' and 'demo2' clusters.
+Verify the clusters exist.  Expected output should show the 'demo1' and 'demo2' clusters.
 
 ```bash
 kind get clusters
@@ -60,7 +58,7 @@ k9s
 
 Calisti provides a dashboard interface that can be used to diagnose any issues with the underlying deployment.
 
-In order to be able to access the Calisti dashboard outside of the lab container we need to enable a reverse-proxy 
+In order to be able to access the Calisti dashboard outside of the lab container we need to enable a reverse-proxy. NOTE: This step is only needed in this lab. In a 'normal' Calisti deployment, the process to access the dashboard is different and documented in the product docs. 
 ```bash
 $HOME/lab/config/smm/proxy.sh
 ```
