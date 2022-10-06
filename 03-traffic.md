@@ -5,27 +5,7 @@
 
 The traffic tap feature of Calisti enables you to monitor live access logs of the Istio sidecar proxies. Each sidecar proxy outputs access information for the individual HTTP requests or HTTP/gRPC streams.
 
-The access logs contain information about the: reporter proxy, source and destination workloads, request, response, as well as the timings.
-
-### Traffic tap using the CLI
-
-To watch the access logs for an individual namespace, workload/pod, use the "smm tap" command. Be sure to have some live traffic generated using any of the previous methods for this to work.
-
-For smm-demo namespace
-
-```bash
-smm tap ns/smm-demo
-```
-
-Press Ctrl+C in the terminal to stop. The output should be similar to
-
-![ttap 1](images/ttap_1.png)
-
-It is also possible to filter on workload
-
-```bash
-smm tap --ns smm-demo workload/bookings-v1
-```
+The access logs contain information about the reporter proxy, source and destination workloads, request, response, as well as the timings.
 
 ### Traffic tap using the UI
 
@@ -43,7 +23,7 @@ Select any row of a trace to see more information about that trace.
 
 Calisti also provides distributed tracing - the process of tracking individual requests throughout their whole call stack in the system.
 
-With distributed tracing in place it is possible to visualize full call stacks, to see which service called which service, how long each call took and how much were the network latencies between them. It is possible to tell where a request failed or which service took too much time to respond.
+With distributed tracing in place it is possible to visualize full call stacks, to see which service called which service, how long each call took and how much the network latencies were between them. It is possible to tell where a request failed or which service took too much time to respond.
 To collect and visualize this information, Istio comes with tools like Jaeger which is installed automatically by default when installing Calisti.
 
 The demo application uses golang services which are configured to propagate the necessary tracing headers.
@@ -58,7 +38,7 @@ In the Jaeger UI, select one of the rows of traces and click around the various 
 
 ![ttapui 2](images/ttapui_2.png)
 
-In the Jaeger UI you can see the whole call stack in the microservices architecture. You can see when exactly the root request was started and how much each request took. 
+In the Jaeger UI you can see the whole call stack in the microservices architecture. You can see when exactly the root request was started and how much time each request took. 
 
 ![ttapui 3](images/ttapui_3.png)
 
@@ -162,7 +142,7 @@ In the "TOPOLOGY" view, notice that under the "movies" service that there are v1
 
 ![traffic m1](images/mtraffic_1.png)
 
-Select the "movies" service, then "TRAFFIC MANAGEMENT". You can see a pre-defined traffic management rule. You will notice that the defind traffic splitting ratio is 33% for each version of the movies service.
+Select the "movies" service, then "TRAFFIC MANAGEMENT". You can see a pre-defined traffic management rule. You will notice that the defined traffic splitting ratio is 33% for each version of the movies service.
 
 ![traffic m2](images/mtraffic_2.png)
 
