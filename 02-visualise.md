@@ -41,23 +41,3 @@ Select the "postgresql (kind-demo1)" service in the graph and display its detail
 
 ![topology 1](images/pod_logs.png)
 
-## Generate traffic load
-
-
-Most of the data displayed and the features provided in the Calisti interface are based on anaylsing the traffic received by the different applications in the cluster. Calisti provides several mechanisms to generate traffic.
-
-If there is no traffic generated, the topolgy cannot be displayed and an option to generate traffic is displayed instead.
-
-![traffic 1](images/traffic_1.png)
-
-If the topology is displayed, triggering the traffic generation can be done using the HTTP button on the left
-
-![traffic 2](images/traffic_2.png)
-
-Let's generate some traffic on the frontend service from the smm-demo namespace.
-
-![traffic 3](images/traffic_3.png)
-
-Going back to the overview page of the dashboard we can now see the traffic increasing.
-
-![traffic 4](images/traffic_4.png)
