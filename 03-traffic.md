@@ -42,63 +42,6 @@ In the Jaeger UI you can see the whole call stack in the microservices architect
 
 ![ttapui 3](images/ttapui_3.png)
 
-
-## Circuit breaking
-
-Circuit Breaking is a pattern for creating resilient microservices applications. In microservices architecture, services are deployed across multiple nodes or clusters and have different response times or failure rate. Downstream clients need to be protected from excessive slowness of upstream services. Upstream services, in turn, must be protected from being overloaded by a backlog of requests.
-
-A circuit breaker can have three states:
-
-**Closed**: requests succeed or fail until the number of failures reach a predetermined threshold, with no interference from the breaker. When the threshold is reached, the circuit breaker opens.
-
-**Open**: the circuit breaker trips the requests, which means that it returns an error without attempting to execute the call
-
-**Half open**: the failing service is given time to recover from its broken behavior. If requests continue to fail in this state, then the circuit breaker is opened again and keeps tripping requests. Otherwise, if the requests succeed in the half open state, then the circuit breaker will close and the service will be allowed to handle requests again.
-
-![circuit 1](images/circuit_1.png)
-
-Calisti is using Istio’s - and therefore Envoy’s - circuit breaking feature under the hood.
-
-Let's configure a circuit breaker for a service. In the "TOPOLOGY" view, select the "analytics" service, select the "CIRCUIT BREAKER" tab and then "Configure".
-
-![circuit 2](images/circuit_2.png)
-
-In order to be able to see immediate results of the Circuit Breaker activation, configure it with the with the following values:
-- TCP settings
-  - MAX CONNECTIONS: 1
-  - CONNECTION TIMEOUT: 1
-- HTTP settings
-  - MAX PENDING HTTP REQUESTS: 1
-  - MAX HTTP REQUESTS: 1
-  - MAX REQUESTS PER CONNECTION: 1
-  - MAX RETRIES: 1
-- Outlier Detection settings
-  - CONSECUTIVE ERRORS: 1
-  - INTERVAL: 10
-  - VASE EJECTION TIME: 10
-  - MAX EJECTION PERCENTAGE: 1
-
-Select "CONFIGURE"
-
-![circuit 3](images/circuit_3.png)
-
-Generate some additional load on the analytics service.
-
-![circuit 4](images/circuit_4.png)
-
-When traffic begins to flow the circuit breaker starts to trip requests. In the Calisti UI, you can see two live Grafana dashboards which specifically show the circuit breaker trips and help you learn more about the errors involved.
-
-The first dashboard details the percentage of total requests that were tripped by the circuit breaker. When there are no circuit breaker errors, and your service works as expected, this graph shows 0%. Otherwise, it shows the percentage of the requests that were tripped by the circuit breaker.
-
-The second dashboard provides a breakdown of the trips caused by the circuit breaker by source. If no circuit breaker trips occurred, there are no spikes in this graph. Otherwise, it shows which service caused the circuit breaker to trip, when, and how many times. Malicious clients can be tracked by checking this graph.
-
-![circuit 4](images/breaker_5.png)
-
-To remove circuit breaking select the Delete icon in the top of the "CIRCUIT BREAKER" entry.
-
-![circuit 5](images/breaker_6.png)
-
-
 ## Fault injection
 
 Fault injection is a system testing method which involves the deliberate introduction of network faults and errors into a system. It can be used to identify design or configuration weaknesses, and to ensure that the system can handle faults and recover from error conditions.
