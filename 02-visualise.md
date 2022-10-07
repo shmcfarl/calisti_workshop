@@ -14,7 +14,7 @@ If not already selected, select the "smm-demo" namespace and display its topolgy
 
 ![topology 1](images/m1_3.png)
 
-The nodes in the graph are services or workloads, while the arrows represent network connections between different services. This is based on Istio metrics retrieved from Prometheus. You can click and zoom into the services and note how the traffic protocols along with the requests per second(RPS) are also shown in the topology view.
+The nodes in the graph are services or workloads, while the arrows represent network connections between different services. This is based on Istio metrics retrieved from Prometheus. You can click and zoom into the services and note how the traffic protocols along with the requests per second (RPS) are also shown in the topology view.
 
 We can easily observe the various microservices in the demo application:
 
