@@ -13,7 +13,7 @@ Select the menu at the top-left of the screen and select "TRAFFIC TAP" then sele
 
 After a few seconds, select "PAUSE STREAMING".
 
-The functionality is also available in the UI, including setting the different filters.
+The functionality is also available in the CLI, including setting the different filters (check the Calisti documentation).
 
 ![ttapui 1](images/ttapui_1.png)
 
@@ -100,9 +100,7 @@ Select "Apply"
 
 ![traffic m3](images/mtraffic_3.png)
 
-Generate traffic against the "movies" service.
-
-Select the "v3" workload and under the "OVERVIEW" tab, you will see an increase in the "INCOMING REQUEST BY SOURCE" metric.
+Select the "v3" workload and under the "OVERVIEW" tab, you will see an increase in the "INCOMING REQUEST BY DESTINATION" metric.
 
 ## Conclusion
 
