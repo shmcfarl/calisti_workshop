@@ -102,6 +102,28 @@ Select "Apply"
 
 Select the "v3" workload and under the "OVERVIEW" tab, you will see an increase in the "INCOMING REQUEST BY DESTINATION" metric.
 
+### Distributed Tracing
+
+Calisti also provides distributed tracing - the process of tracking individual requests throughout their whole call stack in the system.
+
+With distributed tracing in place it is possible to visualize full call stacks, to see which service called which service, how long each call took and how much the network latencies were between them. It is possible to tell where a request failed or which service took too much time to respond.
+To collect and visualize this information, Istio comes with tools like Jaeger which is installed automatically by default when installing Calisti.
+
+The demo application uses golang services which are configured to propagate the necessary tracing headers.
+
+Once load is sent to the application, traces can be perceived right away.
+Jaeger is exposed through an ingress gateway and the links are present on the UI (both on the graph and list view). 
+
+Select the menu item at the top-left of the screen and select "TOPOLOGY". Select the "bookings" service then select the "Traces" item that is on the lower-right hand side of the window (in the "OVERVIEW" tab).
+
+In the Jaeger UI, select one of the rows of traces and click around the various spans of the trace to look at the details of the service and spans.
+
+![ttapui 2](images/ttapui_2.png)
+
+In the Jaeger UI you can see the whole call stack in the microservices architecture. You can see when exactly the root request was started and how much time each request took. 
+
+![ttapui 3](images/ttapui_3.png)
+
 ## Conclusion
 
 This concludes the Calsti hands-on lab. 
