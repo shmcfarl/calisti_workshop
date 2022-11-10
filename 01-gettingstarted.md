@@ -60,7 +60,11 @@ Press enter when prompted:
 Press enter to continue.
 ```
 
-Please copy the generated token and paste in the dedicated field when opening the [dashboard](http://location.hostname:8080) in your browser. Note that the token has a limited validity in time, so if you encounter any errors please re-generate & retry.
+Please copy the generated token and paste in the dedicated field when opening the [dashboard](http://location.hostname:8080) in your browser. Copy the token after the "login token" section as shown in the following figure:
+
+![dashboard token](images/dashboard_token.png) 
+
+Note that the token has a limited validity in time, so if you encounter any errors please re-generate & retry.
 
 ![calisti dashboard login](images/dashboard_login.png)
 
