@@ -19,38 +19,15 @@ The functionality is also available in the CLI, including setting the different 
 
 Select any row of a trace to see more information about that trace.
 
-### Distributed Tracing
-
-Calisti also provides distributed tracing - the process of tracking individual requests throughout their whole call stack in the system.
-
-With distributed tracing in place it is possible to visualize full call stacks, to see which service called which service, how long each call took and how much the network latencies were between them. It is possible to tell where a request failed or which service took too much time to respond.
-To collect and visualize this information, Istio comes with tools like Jaeger which is installed automatically by default when installing Calisti.
-
-The demo application uses golang services which are configured to propagate the necessary tracing headers.
-
-Once load is sent to the application, traces can be perceived right away.
-Jaeger is exposed through an ingress gateway and the links are present on the UI (both on the graph and list view). 
-
-Select the menu item at the top-left of the screen and select "TOPOLOGY". Select the "bookings" service then select the "Traces" item that is on the lower-right hand side of the window (in the "OVERVIEW" tab).
-
-In the Jaeger UI, select one of the rows of traces and click around the various spans of the trace to look at the details of the service and spans.
-
-
-![ttapui 2](images/ttapui_2.png)
-
-In the Jaeger UI you can see the whole call stack in the microservices architecture. You can see when exactly the root request was started and how much time each request took. 
-
-![ttapui 3](images/ttapui_3.png)
-
 ## Fault injection
 
 Fault injection is a system testing method which involves the deliberate introduction of network faults and errors into a system. It can be used to identify design or configuration weaknesses, and to ensure that the system can handle faults and recover from error conditions.
 
 With Calisti, you can inject failures at the application layer to test the resiliency of the services. You can configure faults to be injected into requests that match specific conditions to simulate service failures and higher latency between services. There are two types of failures:
 
-**Delay** adds a time delay before forwarding the requests, emulating various failures such as network issues, an overloaded upstream service, and so on.
+**Delay** - Adds a time delay before forwarding the requests, emulating various failures such as network issues, an overloaded upstream service, and so on.
 
-**Abort** aborts the HTTP request attempts and returns error codes to a downstream service, giving the impression that the upstream service is faulty.
+**Abort** - Aborts the HTTP request attempts and returns error codes to a downstream service, giving the impression that the upstream service is faulty.
 
 Calisti uses Istio’s (Envoy) fault injection feature under the hood.
 
@@ -101,28 +78,6 @@ Select "Apply"
 ![traffic m3](images/mtraffic_3.png)
 
 Select the "v3" workload and under the "OVERVIEW" tab, you will see an increase in the "INCOMING REQUEST BY DESTINATION" metric.
-
-### Distributed Tracing
-
-Calisti also provides distributed tracing - the process of tracking individual requests throughout their whole call stack in the system.
-
-With distributed tracing in place it is possible to visualize full call stacks, to see which service called which service, how long each call took and how much the network latencies were between them. It is possible to tell where a request failed or which service took too much time to respond.
-To collect and visualize this information, Istio comes with tools like Jaeger which is installed automatically by default when installing Calisti.
-
-The demo application uses golang services which are configured to propagate the necessary tracing headers.
-
-Once load is sent to the application, traces can be perceived right away.
-Jaeger is exposed through an ingress gateway and the links are present on the UI (both on the graph and list view). 
-
-Select the menu item at the top-left of the screen and select "TOPOLOGY". Select the "bookings" service then select the "Traces" item that is on the lower-right hand side of the window (in the "OVERVIEW" tab).
-
-In the Jaeger UI, select one of the rows of traces and click around the various spans of the trace to look at the details of the service and spans.
-
-![ttapui 2](images/ttapui_2.png)
-
-In the Jaeger UI you can see the whole call stack in the microservices architecture. You can see when exactly the root request was started and how much time each request took. 
-
-![ttapui 3](images/ttapui_3.png)
 
 ## Conclusion
 
