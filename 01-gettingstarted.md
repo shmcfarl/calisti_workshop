@@ -27,13 +27,8 @@ Verify the clusters exist.  Expected output should show the 'demo1' and 'demo2' 
 ```bash
 kind get clusters
 ```
-Get the list of nodes in the cluster. We should have 3.
 
-```bash
-kind get nodes --name demo1
-```
-
-Check the status of the pods running in the cluster.  All pods should be in "Running" state.
+Check the status of the pods running in the first cluster.  All pods should be in "Running" state.
 
 ```bash
 kubectl get pods -A
@@ -44,15 +39,6 @@ Check the Calisti SMM cluster status:
 ```bash
 smm istio cluster status -c ~/.kube/demo1.kconf
 ```
-
-You can also have an overview of the cluster using k9s - a terminal based UI to interact with your Kubernetes cluster.
-
-```bash
-k9s
-```
-
-![k9s 1](images/k9s_1.png)
-(press Ctrl+c to exit)
 
 ## Calisti dashboard
 
