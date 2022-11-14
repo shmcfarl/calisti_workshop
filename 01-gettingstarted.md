@@ -49,7 +49,7 @@ In order to be able to access the Calisti dashboard outside of the lab container
 $HOME/lab/config/smm/proxy.sh
 ```
 
-For authenticating to the dashboard we will need an authentication token which is generated using the smm login command
+For authenticating to the dashboard we will need an authentication token which is generated using the smm login command.
 
 ```bash
 smm login
@@ -64,9 +64,11 @@ Please copy the generated token and paste in the dedicated field when opening th
 
 ![dashboard token](images/dashboard_token.png) 
 
-Note that the token has a limited validity in time, so if you encounter any errors please re-generate & retry.
 
 ![calisti dashboard login](images/dashboard_login.png)
+
+
+Note that the token has a limited validity in time, so if you encounter any errors please re-generate & retry.
 
 ## The Calisti Dashboard - Topology View
 
