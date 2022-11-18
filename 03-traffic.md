@@ -31,16 +31,16 @@ With Calisti, you can inject failures at the application layer to test the resil
 
 Calisti uses Istio’s (Envoy) fault injection feature under the hood.
 
-Select the "bookings" service in the "TOPOLOGY" view, seelect "TRAFFIC MANAGEMENT" and "CREATE NEW".
+Select the "bookings" service in the "TOPOLOGY" view, select "TRAFFIC MANAGEMENT" and "CREATE NEW".
 
 ![fault 1](images/fault_1.png)
 
-Set the Following values
+Set the following values:
 - PORT NUMBER: 8080
 - FAULT INJECTION:
   - DELAY PERCENTAGE: 50
-  - ABORT PERCENTAGE: 40
   - FIXED DELAY: 3s
+  - ABORT PERCENTAGE: 40
   - ABORT HTTP STATUS CODE: 503
 
 ![fault 2](images/fault_2.png)
@@ -48,7 +48,7 @@ Set the Following values
 
 Select "Apply". Under the "OVERVIEW" tab, you can see the ERROR RATE increasing. Select the "HEALTH" tab. You can see that 503 HTTP response code graph climbing. Also, you can see an increasing number of errors under the two ERRORs tables.
 
-Finally, notice that the BOOKINGS "v1" pod will change color over time. Eventually dependent services will begin to be impacted by the errors (FRONTPAGE-v1).
+Finally, notice that the BOOKINGS "v1" pod will change color over time. Dependent services will eventuall begin to be impacted by the errors (FRONTPAGE-v1).
 
 ![fault 5](images/fault_5.png)
 
@@ -68,16 +68,16 @@ Select the "movies" service, then "TRAFFIC MANAGEMENT". You can see a pre-define
 
 Select the pencil icon on the far right of the existing traffic management rule. 
 
-Set the Following values:
-- Click the X on the first row to delete the v1 subset
-- Click the X on the second row to delete the v2 subset
-- SUBSET v3 - WEIGHT: 100
+Set the following values:
+- Click the red X on the first row to delete the v1 subset
+- Click the red X on the second row to delete the v2 subset
+- SUBSET v3 - change the WEIGHT: 100
 
 Select "Apply"
 
 ![traffic m3](images/mtraffic_3.png)
 
-Select the "v3" workload and under the "OVERVIEW" tab, you will see an increase in the "INCOMING REQUEST BY DESTINATION" metric.
+Select the "v3" workload and under the "OVERVIEW" tab, scroll down you will see an increase in the "INCOMING REQUEST BY DESTINATION" metric.
 
 ### Distributed Tracing
 
