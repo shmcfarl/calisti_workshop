@@ -60,7 +60,7 @@ Press enter when prompted:
 Press enter to continue.
 ```
 
-Please copy the generated token and paste in the dedicated field when opening the [dashboard](http://location.hostname:8080) in your browser. In the terimnal to the right, copy the token after the "login token" section as shown in the following example:
+Copy the generated token and paste it in the token field when opening the [dashboard](http://location.hostname:8080) in your browser. In the terminal to the right, copy the token after the "login token" section as shown in the following example:
 
 ![dashboard token](images/dashboard_token.png) 
 
