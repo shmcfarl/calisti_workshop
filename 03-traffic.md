@@ -59,7 +59,7 @@ To remove the Fault Injection, select the "TRAFFIC MANAGEMENT" tab and click on 
 
 Application service meshes support the use of Traffic Steering, AKA: Traffic Splitting. This functionality provides a way to have multiple versions of a service and then 'steer' traffic to each version of that service by a percentage of traffic. This is an awesome way of testing out brand new code or new capablities using live traffic.
 
-In the "TOPOLOGY" view, notice that under the "movies" service that there are v1, v2 and v3 workloads. In this excercise you will steer traffic to only the v3 service.
+In the "TOPOLOGY" view, notice that under the "movies" service there are v1, v2 and v3 workloads. In this excercise you will steer traffic to only the v3 service.
 
 ![traffic m1](images/mtraffic_1.png)
 
