@@ -78,7 +78,7 @@ Select "Apply"
 
 ![traffic m3](images/mtraffic_3.png)
 
-Select the "v3" workload and under the "OVERVIEW" tab, scroll down you will see an increase in the "INCOMING REQUEST BY DESTINATION" metric.
+Select the "v3" workload and under the "OVERVIEW" tab, scroll down you will see an increase in the "INCOMING REQUEST BY DESTINATION" metric the "movies-v3.smm-demo".
 
 ### Distributed Tracing
 
