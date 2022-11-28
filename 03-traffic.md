@@ -46,7 +46,8 @@ Set the following values:
 ![fault 2](images/fault_2.png)
 ![fault 3](images/fault_3.png)
 
-Select "Apply". Under the "OVERVIEW" tab, you can see the ERROR RATE increasing. Select the "HEALTH" tab. You can see that 503 HTTP response code graph climbing. Also, you can see an increasing number of errors under the two ERRORs tables.
+Select "Apply". Under the "OVERVIEW" tab, you can see the ERROR RATE increasing. You can see the status of the "Health" bar moving towards the "unhealthy" side.
+
 
 Finally, notice that the BOOKINGS "v1" pod will change color over time. Dependent services will eventuall begin to be impacted by the errors (FRONTPAGE-v1).
 
