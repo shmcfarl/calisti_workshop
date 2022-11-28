@@ -98,7 +98,7 @@ In the Jaeger UI, select one of the rows of traces and click around the various 
 
 ![ttapui 2](images/ttapui_2.png)
 
-In the Jaeger UI you can see the whole call stack in the microservices architecture. You can see when exactly the root request was started and how much time each request took. 
+In the Jaeger UI you can see the whole call stack in the microservices architecture. Click on one of the trace titles (e.g., "bombardier.smm-demo: frontpage.smm-demo.svc.cluster.local:8080"). You can see when the root request was started and how much time each request took as it hits each service. 
 
 ![ttapui 3](images/ttapui_3.png)
 
