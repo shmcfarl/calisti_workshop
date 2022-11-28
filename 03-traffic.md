@@ -49,8 +49,6 @@ Set the following values:
 Select "Apply". Under the "OVERVIEW" tab, you can see the ERROR RATE increasing. You can see the status of the "Health" bar moving towards the "unhealthy" side.
 
 
-Finally, notice that the BOOKINGS "v1" pod will change color over time. Dependent services will eventuall begin to be impacted by the errors (FRONTPAGE-v1).
-
 ![fault 5](images/fault_5.png)
 
 To remove the Fault Injection, select the "TRAFFIC MANAGEMENT" tab and click on the trash can icon to the far right of the fault policy and then confirm the route deletion by selecting "Delete".
@@ -78,7 +76,8 @@ Select "Apply"
 
 ![traffic m3](images/mtraffic_3.png)
 
-Select the "v3" workload and under the "OVERVIEW" tab, scroll down you will see an increase in the "INCOMING REQUEST BY DESTINATION" metric the "movies-v3.smm-demo".
+
+Select the "v3" workload and under the "OVERVIEW" tab, scroll down and you will see an increase in the "INCOMING REQUEST BY DESTINATION" metric the "movies-v3.smm-demo".
 
 ### Distributed Tracing
 
@@ -94,11 +93,12 @@ Jaeger is exposed through an ingress gateway and the links are present on the UI
 
 Select the menu item at the top-left of the screen and select "TOPOLOGY". Select the "bookings" service then select the "Traces" item that is on the lower-right hand side of the window (in the "OVERVIEW" tab).
 
-In the Jaeger UI, select one of the rows of traces and click around the various spans of the trace to look at the details of the service and spans.
 
 ![ttapui 2](images/ttapui_2.png)
 
+
 In the Jaeger UI you can see the whole call stack in the microservices architecture. Click on one of the trace titles (e.g., "bombardier.smm-demo: frontpage.smm-demo.svc.cluster.local:8080"). You can see when the root request was started and how much time each request took as it hits each service. 
+
 
 ![ttapui 3](images/ttapui_3.png)
 
