@@ -13,11 +13,11 @@ Select the menu at the top-left of the screen and select "TRAFFIC TAP" then sele
 
 After a few seconds, select "PAUSE STREAMING".
 
+Select any row of a trace to see more information about that trace.
+
 The functionality is also available in the CLI, including setting the different filters (check the Calisti documentation).
 
 ![ttapui 1](images/ttapui_1.png)
-
-Select any row of a trace to see more information about that trace.
 
 ## Fault injection
 
