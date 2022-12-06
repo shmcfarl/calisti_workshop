@@ -2,7 +2,7 @@
 
 # Visualize your mesh
 
-## Topolgy 
+## Topology 
 
 The TOPOLOGY page of the Calisti web interface displays the topology of services and workloads inside the mesh, and annotates it with real-time information about latency, throughput, or HTTP request failures. You can also display historical data by adjusting the timeline.
 
