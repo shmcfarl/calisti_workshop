@@ -1,13 +1,13 @@
 
-# Traffic management
+# Traffic Management
 
-## Traffic tap
+## Traffic Tap
 
 The traffic tap feature of Calisti enables you to monitor live access logs of the Istio sidecar proxies. Each sidecar proxy outputs access information for the individual HTTP requests or HTTP/gRPC streams.
 
 The access logs contain information about the reporter proxy, source and destination workloads, request, response, as well as the timings.
 
-### Traffic tap using the UI
+### Traffic Tap Using the UI
 
 Select the menu at the top-left of the screen and select "TRAFFIC TAP" then select "smm-demo" in the "REPORTING SOURCE" list. Select "START STREAMING".
 
@@ -19,7 +19,7 @@ The functionality is also available in the CLI, including setting the different 
 
 ![ttapui 1](images/ttapui_1.png)
 
-## Fault injection
+## Fault Injection
 
 Fault injection is a system testing method which involves the deliberate introduction of network faults and errors into a system. It can be used to identify design or configuration weaknesses, and to ensure that the system can handle faults and recover from error conditions.
 
