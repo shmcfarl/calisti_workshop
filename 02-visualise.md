@@ -1,6 +1,6 @@
 
 
-# Visualize your mesh
+# Visualize Your Mesh
 
 ## Topology 
 
@@ -28,7 +28,7 @@ We can easily observe the various microservices in the demo application:
 
 •	There are 3 versions of the catalog microservice with version2 using mysql and version3 using a different database
 
-### View Database metrics
+### View Database Metrics
 
 Calisti is also able to show the details for services such as MySQL and Postgresql – these metrics are not available in Istio and is a value-add provided by Calisti. 
 
